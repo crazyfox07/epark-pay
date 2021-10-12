@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bitcom.base.mapper.InfoRefundFlowMapper">
+    <resultMap id="BaseResultMap" type="com.bitcom.base.domain.InfoRefundFlow">
+        <id column="nid" property="nid" jdbcType="VARCHAR"/>
+        <result column="trade_no" property="tradeNo" jdbcType="VARCHAR"/>
+        <result column="out_refund_no" property="outRefundNo" jdbcType="VARCHAR"/>
+        <result column="refund_id" property="refundId" jdbcType="VARCHAR"/>
+        <result column="refund_fee" property="refundFee" jdbcType="VARCHAR"/>
+        <result column="refund_time" property="refundTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    nid, trade_no, out_refund_no, refund_id, refund_fee, refund_time
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from info_refund_flow
+        where nid = #{nid,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from info_refund_flow
+    where nid = #{nid,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.bitcom.base.domain.InfoRefundFlow">
+    insert into info_refund_flow (nid, trade_no, out_refund_no,
+      refund_id, refund_fee, refund_time
+      )
+    values (#{nid,jdbcType=VARCHAR}, #{tradeNo,jdbcType=VARCHAR}, #{outRefundNo,jdbcType=VARCHAR},
+      #{refundId,jdbcType=VARCHAR}, #{refundFee,jdbcType=VARCHAR}, #{refundTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.bitcom.base.domain.InfoRefundFlow">
+        insert into info_refund_flow
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="nid != null">
+                nid,
+            </if>
+            <if test="tradeNo != null">
+                trade_no,
+            </if>
+            <if test="outRefundNo != null">
+                out_refund_no,
+            </if>
+            <if test="refundId != null">
+                refund_id,
+            </if>
+            <if test="refundFee != null">
+                refund_fee,
+            </if>
+            <if test="refundTime != null">
+                refund_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="nid != null">
+                #{nid,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeNo != null">
+                #{tradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="outRefundNo != null">
+                #{outRefundNo,jdbcType=VARCHAR},
+            </if>
+            <if test="refundId != null">
+                #{refundId,jdbcType=VARCHAR},
+            </if>
+            <if test="refundFee != null">
+                #{refundFee,jdbcType=VARCHAR},
+            </if>
+            <if test="refundTime != null">
+                #{refundTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bitcom.base.domain.InfoRefundFlow">
+        update info_refund_flow
+        <set>
+            <if test="tradeNo != null">
+                trade_no = #{tradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="outRefundNo != null">
+                out_refund_no = #{outRefundNo,jdbcType=VARCHAR},
+            </if>
+            <if test="refundId != null">
+                refund_id = #{refundId,jdbcType=VARCHAR},
+            </if>
+            <if test="refundFee != null">
+                refund_fee = #{refundFee,jdbcType=VARCHAR},
+            </if>
+            <if test="refundTime != null">
+                refund_time = #{refundTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where nid = #{nid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bitcom.base.domain.InfoRefundFlow">
+    update info_refund_flow
+    set trade_no = #{tradeNo,jdbcType=VARCHAR},
+      out_refund_no = #{outRefundNo,jdbcType=VARCHAR},
+      refund_id = #{refundId,jdbcType=VARCHAR},
+      refund_fee = #{refundFee,jdbcType=VARCHAR},
+      refund_time = #{refundTime,jdbcType=TIMESTAMP}
+    where nid = #{nid,jdbcType=VARCHAR}
+  </update>
+</mapper>

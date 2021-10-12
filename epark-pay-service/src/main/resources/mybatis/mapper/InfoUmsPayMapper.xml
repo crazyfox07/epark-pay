@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bitcom.base.mapper.InfoUmsPayMapper">
+    <resultMap id="BaseResultMap" type="com.bitcom.base.domain.InfoUmsPay">
+        <id column="pay_id" property="payId" jdbcType="INTEGER"/>
+        <result column="mer_order_id" property="merOrderId" jdbcType="VARCHAR"/>
+        <result column="notify_id" property="notifyId" jdbcType="VARCHAR"/>
+        <result column="mid" property="mid" jdbcType="VARCHAR"/>
+        <result column="tid" property="tid" jdbcType="VARCHAR"/>
+        <result column="bill_funds" property="billFunds" jdbcType="VARCHAR"/>
+        <result column="bill_funds_desc" property="billFundsDesc" jdbcType="VARCHAR"/>
+        <result column="total_amount" property="totalAmount" jdbcType="INTEGER"/>
+        <result column="invoice_amount" property="invoiceAmount" jdbcType="INTEGER"/>
+        <result column="pay_time" property="payTime" jdbcType="VARCHAR"/>
+        <result column="settle_date" property="settleDate" jdbcType="VARCHAR"/>
+        <result column="buyer_id" property="buyerId" jdbcType="VARCHAR"/>
+        <result column="buyer_name" property="buyerName" jdbcType="VARCHAR"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="target_order_id" property="targetOrderId" jdbcType="VARCHAR"/>
+        <result column="target_sys" property="targetSys" jdbcType="VARCHAR"/>
+        <result column="sign" property="sign" jdbcType="VARCHAR"/>
+        <result column="attach" property="attach" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    pay_id, mer_order_id, notify_id, mid, tid, bill_funds, bill_funds_desc, total_amount,
+    invoice_amount, pay_time, settle_date, buyer_id, buyer_name, status, target_order_id,
+    target_sys, sign, attach
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from info_ums_pay
+        where pay_id = #{payId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from info_ums_pay
+    where pay_id = #{payId,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.bitcom.base.domain.InfoUmsPay">
+    insert into info_ums_pay (pay_id, mer_order_id, notify_id,
+      mid, tid, bill_funds,
+      bill_funds_desc, total_amount, invoice_amount,
+      pay_time, settle_date, buyer_id,
+      buyer_name, status, target_order_id,
+      target_sys, sign, attach
+      )
+    values (#{payId,jdbcType=INTEGER}, #{merOrderId,jdbcType=VARCHAR}, #{notifyId,jdbcType=VARCHAR},
+      #{mid,jdbcType=VARCHAR}, #{tid,jdbcType=VARCHAR}, #{billFunds,jdbcType=VARCHAR},
+      #{billFundsDesc,jdbcType=VARCHAR}, #{totalAmount,jdbcType=INTEGER}, #{invoiceAmount,jdbcType=INTEGER},
+      #{payTime,jdbcType=VARCHAR}, #{settleDate,jdbcType=VARCHAR}, #{buyerId,jdbcType=VARCHAR},
+      #{buyerName,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{targetOrderId,jdbcType=VARCHAR},
+      #{targetSys,jdbcType=VARCHAR}, #{sign,jdbcType=VARCHAR}, #{attach,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.bitcom.base.domain.InfoUmsPay">
+        insert into info_ums_pay
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="payId != null">
+                pay_id,
+            </if>
+            <if test="merOrderId != null">
+                mer_order_id,
+            </if>
+            <if test="notifyId != null">
+                notify_id,
+            </if>
+            <if test="mid != null">
+                mid,
+            </if>
+            <if test="tid != null">
+                tid,
+            </if>
+            <if test="billFunds != null">
+                bill_funds,
+            </if>
+            <if test="billFundsDesc != null">
+                bill_funds_desc,
+            </if>
+            <if test="totalAmount != null">
+                total_amount,
+            </if>
+            <if test="invoiceAmount != null">
+                invoice_amount,
+            </if>
+            <if test="payTime != null">
+                pay_time,
+            </if>
+            <if test="settleDate != null">
+                settle_date,
+            </if>
+            <if test="buyerId != null">
+                buyer_id,
+            </if>
+            <if test="buyerName != null">
+                buyer_name,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="targetOrderId != null">
+                target_order_id,
+            </if>
+            <if test="targetSys != null">
+                target_sys,
+            </if>
+            <if test="sign != null">
+                sign,
+            </if>
+            <if test="attach != null">
+                attach,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="payId != null">
+                #{payId,jdbcType=INTEGER},
+            </if>
+            <if test="merOrderId != null">
+                #{merOrderId,jdbcType=VARCHAR},
+            </if>
+            <if test="notifyId != null">
+                #{notifyId,jdbcType=VARCHAR},
+            </if>
+            <if test="mid != null">
+                #{mid,jdbcType=VARCHAR},
+            </if>
+            <if test="tid != null">
+                #{tid,jdbcType=VARCHAR},
+            </if>
+            <if test="billFunds != null">
+                #{billFunds,jdbcType=VARCHAR},
+            </if>
+            <if test="billFundsDesc != null">
+                #{billFundsDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="totalAmount != null">
+                #{totalAmount,jdbcType=INTEGER},
+            </if>
+            <if test="invoiceAmount != null">
+                #{invoiceAmount,jdbcType=INTEGER},
+            </if>
+            <if test="payTime != null">
+                #{payTime,jdbcType=VARCHAR},
+            </if>
+            <if test="settleDate != null">
+                #{settleDate,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerId != null">
+                #{buyerId,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerName != null">
+                #{buyerName,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="targetOrderId != null">
+                #{targetOrderId,jdbcType=VARCHAR},
+            </if>
+            <if test="targetSys != null">
+                #{targetSys,jdbcType=VARCHAR},
+            </if>
+            <if test="sign != null">
+                #{sign,jdbcType=VARCHAR},
+            </if>
+            <if test="attach != null">
+                #{attach,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bitcom.base.domain.InfoUmsPay">
+        update info_ums_pay
+        <set>
+            <if test="merOrderId != null">
+                mer_order_id = #{merOrderId,jdbcType=VARCHAR},
+            </if>
+            <if test="notifyId != null">
+                notify_id = #{notifyId,jdbcType=VARCHAR},
+            </if>
+            <if test="mid != null">
+                mid = #{mid,jdbcType=VARCHAR},
+            </if>
+            <if test="tid != null">
+                tid = #{tid,jdbcType=VARCHAR},
+            </if>
+            <if test="billFunds != null">
+                bill_funds = #{billFunds,jdbcType=VARCHAR},
+            </if>
+            <if test="billFundsDesc != null">
+                bill_funds_desc = #{billFundsDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="totalAmount != null">
+                total_amount = #{totalAmount,jdbcType=INTEGER},
+            </if>
+            <if test="invoiceAmount != null">
+                invoice_amount = #{invoiceAmount,jdbcType=INTEGER},
+            </if>
+            <if test="payTime != null">
+                pay_time = #{payTime,jdbcType=VARCHAR},
+            </if>
+            <if test="settleDate != null">
+                settle_date = #{settleDate,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerId != null">
+                buyer_id = #{buyerId,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerName != null">
+                buyer_name = #{buyerName,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="targetOrderId != null">
+                target_order_id = #{targetOrderId,jdbcType=VARCHAR},
+            </if>
+            <if test="targetSys != null">
+                target_sys = #{targetSys,jdbcType=VARCHAR},
+            </if>
+            <if test="sign != null">
+                sign = #{sign,jdbcType=VARCHAR},
+            </if>
+            <if test="attach != null">
+                attach = #{attach,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where pay_id = #{payId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bitcom.base.domain.InfoUmsPay">
+    update info_ums_pay
+    set mer_order_id = #{merOrderId,jdbcType=VARCHAR},
+      notify_id = #{notifyId,jdbcType=VARCHAR},
+      mid = #{mid,jdbcType=VARCHAR},
+      tid = #{tid,jdbcType=VARCHAR},
+      bill_funds = #{billFunds,jdbcType=VARCHAR},
+      bill_funds_desc = #{billFundsDesc,jdbcType=VARCHAR},
+      total_amount = #{totalAmount,jdbcType=INTEGER},
+      invoice_amount = #{invoiceAmount,jdbcType=INTEGER},
+      pay_time = #{payTime,jdbcType=VARCHAR},
+      settle_date = #{settleDate,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=VARCHAR},
+      buyer_name = #{buyerName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      target_order_id = #{targetOrderId,jdbcType=VARCHAR},
+      target_sys = #{targetSys,jdbcType=VARCHAR},
+      sign = #{sign,jdbcType=VARCHAR},
+      attach = #{attach,jdbcType=VARCHAR}
+    where pay_id = #{payId,jdbcType=INTEGER}
+  </update>
+
+    <select id="getUmsPayByMerOrderId" parameterType="java.lang.String" resultType="com.bitcom.base.domain.InfoUmsPay">
+    select * from info_ums_pay where mer_order_id = #{merOrderId} limit 0,1
+  </select>
+
+    <update id="updateCallbackPay" parameterType="com.bitcom.base.domain.InfoUmsPay">
+    update info_ums_pay
+    set  notify_id = #{notifyId,jdbcType=VARCHAR},
+      mid = #{mid,jdbcType=VARCHAR},
+      tid = #{tid,jdbcType=VARCHAR},
+      bill_funds = #{billFunds,jdbcType=VARCHAR},
+      bill_funds_desc = #{billFundsDesc,jdbcType=VARCHAR},
+      total_amount = #{totalAmount,jdbcType=INTEGER},
+      invoice_amount = #{invoiceAmount,jdbcType=INTEGER},
+      pay_time = #{payTime,jdbcType=VARCHAR},
+      settle_date = #{settleDate,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=VARCHAR},
+      buyer_name = #{buyerName,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      target_order_id = #{targetOrderId,jdbcType=VARCHAR},
+      target_sys = #{targetSys,jdbcType=VARCHAR},
+      sign = #{sign,jdbcType=VARCHAR}
+    where pay_id = #{payId,jdbcType=INTEGER} and notify_id is null
+  </update>
+</mapper>

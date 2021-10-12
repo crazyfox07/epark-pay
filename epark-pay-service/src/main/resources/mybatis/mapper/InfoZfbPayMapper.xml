@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bitcom.base.mapper.InfoZfbPayMapper">
+    <resultMap id="BaseResultMap" type="com.bitcom.base.domain.InfoZfbPay">
+        <id column="pay_id" property="payId" jdbcType="INTEGER"/>
+        <result column="notify_time" property="notifyTime" jdbcType="VARCHAR"/>
+        <result column="notify_type" property="notifyType" jdbcType="VARCHAR"/>
+        <result column="notify_id" property="notifyId" jdbcType="VARCHAR"/>
+        <result column="sign_type" property="signType" jdbcType="VARCHAR"/>
+        <result column="sign" property="sign" jdbcType="VARCHAR"/>
+        <result column="out_trade_no" property="outTradeNo" jdbcType="VARCHAR"/>
+        <result column="subject" property="subject" jdbcType="VARCHAR"/>
+        <result column="payment_type" property="paymentType" jdbcType="VARCHAR"/>
+        <result column="trade_no" property="tradeNo" jdbcType="VARCHAR"/>
+        <result column="trade_status" property="tradeStatus" jdbcType="VARCHAR"/>
+        <result column="seller_id" property="sellerId" jdbcType="VARCHAR"/>
+        <result column="seller_email" property="sellerEmail" jdbcType="VARCHAR"/>
+        <result column="buyer_id" property="buyerId" jdbcType="VARCHAR"/>
+        <result column="buyer_email" property="buyerEmail" jdbcType="VARCHAR"/>
+        <result column="total_fee" property="totalFee" jdbcType="VARCHAR"/>
+        <result column="quantity" property="quantity" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="VARCHAR"/>
+        <result column="body" property="body" jdbcType="VARCHAR"/>
+        <result column="gmt_create" property="gmtCreate" jdbcType="VARCHAR"/>
+        <result column="gmt_payment" property="gmtPayment" jdbcType="VARCHAR"/>
+        <result column="is_total_fee_adjust" property="isTotalFeeAdjust" jdbcType="VARCHAR"/>
+        <result column="use_coupon" property="useCoupon" jdbcType="VARCHAR"/>
+        <result column="discount" property="discount" jdbcType="VARCHAR"/>
+        <result column="refund_status" property="refundStatus" jdbcType="VARCHAR"/>
+        <result column="gmt_refund" property="gmtRefund" jdbcType="VARCHAR"/>
+        <result column="order_no" property="orderNo" jdbcType="VARCHAR"/>
+        <result column="coupon_id" property="couponId" jdbcType="VARCHAR"/>
+        <result column="attach" property="attach" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    pay_id, notify_time, notify_type, notify_id, sign_type, sign, out_trade_no, subject, 
+    payment_type, trade_no, trade_status, seller_id, seller_email, buyer_id, buyer_email, 
+    total_fee, quantity, price, body, gmt_create, gmt_payment, is_total_fee_adjust, use_coupon, 
+    discount, refund_status, gmt_refund, order_no, coupon_id, attach
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from info_zfb_pay
+        where pay_id = #{payId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from info_zfb_pay
+    where pay_id = #{payId,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.bitcom.base.domain.InfoZfbPay">
+    insert into info_zfb_pay (pay_id, notify_time, notify_type,
+      notify_id, sign_type, sign, 
+      out_trade_no, subject, payment_type, 
+      trade_no, trade_status, seller_id, 
+      seller_email, buyer_id, buyer_email, 
+      total_fee, quantity, price, 
+      body, gmt_create, gmt_payment, 
+      is_total_fee_adjust, use_coupon, discount, 
+      refund_status, gmt_refund, order_no, 
+      coupon_id, attach)
+    values (#{payId,jdbcType=INTEGER}, #{notifyTime,jdbcType=VARCHAR}, #{notifyType,jdbcType=VARCHAR}, 
+      #{notifyId,jdbcType=VARCHAR}, #{signType,jdbcType=VARCHAR}, #{sign,jdbcType=VARCHAR}, 
+      #{outTradeNo,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{paymentType,jdbcType=VARCHAR}, 
+      #{tradeNo,jdbcType=VARCHAR}, #{tradeStatus,jdbcType=VARCHAR}, #{sellerId,jdbcType=VARCHAR}, 
+      #{sellerEmail,jdbcType=VARCHAR}, #{buyerId,jdbcType=VARCHAR}, #{buyerEmail,jdbcType=VARCHAR}, 
+      #{totalFee,jdbcType=VARCHAR}, #{quantity,jdbcType=VARCHAR}, #{price,jdbcType=VARCHAR}, 
+      #{body,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=VARCHAR}, #{gmtPayment,jdbcType=VARCHAR}, 
+      #{isTotalFeeAdjust,jdbcType=VARCHAR}, #{useCoupon,jdbcType=VARCHAR}, #{discount,jdbcType=VARCHAR}, 
+      #{refundStatus,jdbcType=VARCHAR}, #{gmtRefund,jdbcType=VARCHAR}, #{orderNo,jdbcType=VARCHAR}, 
+      #{couponId,jdbcType=VARCHAR}, #{attach,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.bitcom.base.domain.InfoZfbPay">
+        insert into info_zfb_pay
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="payId != null">
+                pay_id,
+            </if>
+            <if test="notifyTime != null">
+                notify_time,
+            </if>
+            <if test="notifyType != null">
+                notify_type,
+            </if>
+            <if test="notifyId != null">
+                notify_id,
+            </if>
+            <if test="signType != null">
+                sign_type,
+            </if>
+            <if test="sign != null">
+                sign,
+            </if>
+            <if test="outTradeNo != null">
+                out_trade_no,
+            </if>
+            <if test="subject != null">
+                subject,
+            </if>
+            <if test="paymentType != null">
+                payment_type,
+            </if>
+            <if test="tradeNo != null">
+                trade_no,
+            </if>
+            <if test="tradeStatus != null">
+                trade_status,
+            </if>
+            <if test="sellerId != null">
+                seller_id,
+            </if>
+            <if test="sellerEmail != null">
+                seller_email,
+            </if>
+            <if test="buyerId != null">
+                buyer_id,
+            </if>
+            <if test="buyerEmail != null">
+                buyer_email,
+            </if>
+            <if test="totalFee != null">
+                total_fee,
+            </if>
+            <if test="quantity != null">
+                quantity,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="body != null">
+                body,
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create,
+            </if>
+            <if test="gmtPayment != null">
+                gmt_payment,
+            </if>
+            <if test="isTotalFeeAdjust != null">
+                is_total_fee_adjust,
+            </if>
+            <if test="useCoupon != null">
+                use_coupon,
+            </if>
+            <if test="discount != null">
+                discount,
+            </if>
+            <if test="refundStatus != null">
+                refund_status,
+            </if>
+            <if test="gmtRefund != null">
+                gmt_refund,
+            </if>
+            <if test="orderNo != null">
+                order_no,
+            </if>
+            <if test="couponId != null">
+                coupon_id,
+            </if>
+            <if test="attach != null">
+                attach,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="payId != null">
+                #{payId,jdbcType=INTEGER},
+            </if>
+            <if test="notifyTime != null">
+                #{notifyTime,jdbcType=VARCHAR},
+            </if>
+            <if test="notifyType != null">
+                #{notifyType,jdbcType=VARCHAR},
+            </if>
+            <if test="notifyId != null">
+                #{notifyId,jdbcType=VARCHAR},
+            </if>
+            <if test="signType != null">
+                #{signType,jdbcType=VARCHAR},
+            </if>
+            <if test="sign != null">
+                #{sign,jdbcType=VARCHAR},
+            </if>
+            <if test="outTradeNo != null">
+                #{outTradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="subject != null">
+                #{subject,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentType != null">
+                #{paymentType,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeNo != null">
+                #{tradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeStatus != null">
+                #{tradeStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerId != null">
+                #{sellerId,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerEmail != null">
+                #{sellerEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerId != null">
+                #{buyerId,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerEmail != null">
+                #{buyerEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="totalFee != null">
+                #{totalFee,jdbcType=VARCHAR},
+            </if>
+            <if test="quantity != null">
+                #{quantity,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=VARCHAR},
+            </if>
+            <if test="body != null">
+                #{body,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtCreate != null">
+                #{gmtCreate,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtPayment != null">
+                #{gmtPayment,jdbcType=VARCHAR},
+            </if>
+            <if test="isTotalFeeAdjust != null">
+                #{isTotalFeeAdjust,jdbcType=VARCHAR},
+            </if>
+            <if test="useCoupon != null">
+                #{useCoupon,jdbcType=VARCHAR},
+            </if>
+            <if test="discount != null">
+                #{discount,jdbcType=VARCHAR},
+            </if>
+            <if test="refundStatus != null">
+                #{refundStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtRefund != null">
+                #{gmtRefund,jdbcType=VARCHAR},
+            </if>
+            <if test="orderNo != null">
+                #{orderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="couponId != null">
+                #{couponId,jdbcType=VARCHAR},
+            </if>
+            <if test="attach != null">
+                #{attach,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bitcom.base.domain.InfoZfbPay">
+        update info_zfb_pay
+        <set>
+            <if test="notifyTime != null">
+                notify_time = #{notifyTime,jdbcType=VARCHAR},
+            </if>
+            <if test="notifyType != null">
+                notify_type = #{notifyType,jdbcType=VARCHAR},
+            </if>
+            <if test="notifyId != null">
+                notify_id = #{notifyId,jdbcType=VARCHAR},
+            </if>
+            <if test="signType != null">
+                sign_type = #{signType,jdbcType=VARCHAR},
+            </if>
+            <if test="sign != null">
+                sign = #{sign,jdbcType=VARCHAR},
+            </if>
+            <if test="outTradeNo != null">
+                out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="subject != null">
+                subject = #{subject,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentType != null">
+                payment_type = #{paymentType,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeNo != null">
+                trade_no = #{tradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeStatus != null">
+                trade_status = #{tradeStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerId != null">
+                seller_id = #{sellerId,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerEmail != null">
+                seller_email = #{sellerEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerId != null">
+                buyer_id = #{buyerId,jdbcType=VARCHAR},
+            </if>
+            <if test="buyerEmail != null">
+                buyer_email = #{buyerEmail,jdbcType=VARCHAR},
+            </if>
+            <if test="totalFee != null">
+                total_fee = #{totalFee,jdbcType=VARCHAR},
+            </if>
+            <if test="quantity != null">
+                quantity = #{quantity,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=VARCHAR},
+            </if>
+            <if test="body != null">
+                body = #{body,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtCreate != null">
+                gmt_create = #{gmtCreate,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtPayment != null">
+                gmt_payment = #{gmtPayment,jdbcType=VARCHAR},
+            </if>
+            <if test="isTotalFeeAdjust != null">
+                is_total_fee_adjust = #{isTotalFeeAdjust,jdbcType=VARCHAR},
+            </if>
+            <if test="useCoupon != null">
+                use_coupon = #{useCoupon,jdbcType=VARCHAR},
+            </if>
+            <if test="discount != null">
+                discount = #{discount,jdbcType=VARCHAR},
+            </if>
+            <if test="refundStatus != null">
+                refund_status = #{refundStatus,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtRefund != null">
+                gmt_refund = #{gmtRefund,jdbcType=VARCHAR},
+            </if>
+            <if test="orderNo != null">
+                order_no = #{orderNo,jdbcType=VARCHAR},
+            </if>
+            <if test="couponId != null">
+                coupon_id = #{couponId,jdbcType=VARCHAR},
+            </if>
+            <if test="attach != null">
+                attach = #{attach,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where pay_id = #{payId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bitcom.base.domain.InfoZfbPay">
+    update info_zfb_pay
+    set notify_time = #{notifyTime,jdbcType=VARCHAR},
+      notify_type = #{notifyType,jdbcType=VARCHAR},
+      notify_id = #{notifyId,jdbcType=VARCHAR},
+      sign_type = #{signType,jdbcType=VARCHAR},
+      sign = #{sign,jdbcType=VARCHAR},
+      out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      subject = #{subject,jdbcType=VARCHAR},
+      payment_type = #{paymentType,jdbcType=VARCHAR},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      trade_status = #{tradeStatus,jdbcType=VARCHAR},
+      seller_id = #{sellerId,jdbcType=VARCHAR},
+      seller_email = #{sellerEmail,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=VARCHAR},
+      buyer_email = #{buyerEmail,jdbcType=VARCHAR},
+      total_fee = #{totalFee,jdbcType=VARCHAR},
+      quantity = #{quantity,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      body = #{body,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=VARCHAR},
+      gmt_payment = #{gmtPayment,jdbcType=VARCHAR},
+      is_total_fee_adjust = #{isTotalFeeAdjust,jdbcType=VARCHAR},
+      use_coupon = #{useCoupon,jdbcType=VARCHAR},
+      discount = #{discount,jdbcType=VARCHAR},
+      refund_status = #{refundStatus,jdbcType=VARCHAR},
+      gmt_refund = #{gmtRefund,jdbcType=VARCHAR},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      coupon_id = #{couponId,jdbcType=VARCHAR},
+      attach = #{attach,jdbcType=VARCHAR}
+    where pay_id = #{payId,jdbcType=INTEGER}
+  </update>
+
+    <select id="queryZfbPayByOutTradeNo" parameterType="java.lang.String"
+            resultType="com.bitcom.base.domain.InfoZfbPay">
+  	select * from info_zfb_pay where out_trade_no = #{outTradeNo}
+  </select>
+
+    <!-- 支付宝回写支付记录 wgw 20180414 -->
+    <update id="updateCallBackZfbPay" parameterType="com.bitcom.base.domain.InfoZfbPay">
+  	update info_zfb_pay
+    set notify_time = #{notifyTime,jdbcType=VARCHAR},
+      notify_type = #{notifyType,jdbcType=VARCHAR},
+      notify_id = #{notifyId,jdbcType=VARCHAR},
+      sign_type = #{signType,jdbcType=VARCHAR},
+      sign = #{sign,jdbcType=VARCHAR},
+      out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      subject = #{subject,jdbcType=VARCHAR},
+      payment_type = #{paymentType,jdbcType=VARCHAR},
+      trade_no = #{tradeNo,jdbcType=VARCHAR},
+      trade_status = #{tradeStatus,jdbcType=VARCHAR},
+      seller_id = #{sellerId,jdbcType=VARCHAR},
+      seller_email = #{sellerEmail,jdbcType=VARCHAR},
+      buyer_id = #{buyerId,jdbcType=VARCHAR},
+      buyer_email = #{buyerEmail,jdbcType=VARCHAR},
+      total_fee = #{totalFee,jdbcType=VARCHAR},
+      quantity = #{quantity,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      body = #{body,jdbcType=VARCHAR},
+      gmt_create = #{gmtCreate,jdbcType=VARCHAR},
+      gmt_payment = #{gmtPayment,jdbcType=VARCHAR},
+      is_total_fee_adjust = #{isTotalFeeAdjust,jdbcType=VARCHAR},
+      use_coupon = #{useCoupon,jdbcType=VARCHAR},
+      discount = #{discount,jdbcType=VARCHAR},
+      refund_status = #{refundStatus,jdbcType=VARCHAR},
+      gmt_refund = #{gmtRefund,jdbcType=VARCHAR},
+      order_no = #{orderNo,jdbcType=VARCHAR},
+      coupon_id = #{couponId,jdbcType=VARCHAR},
+      attach = #{attach,jdbcType=VARCHAR}
+    where pay_id = #{payId,jdbcType=INTEGER} and notify_id is null
+  </update>
+
+
+</mapper>

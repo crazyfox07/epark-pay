@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bitcom.base.mapper.InfoSwiftcloudPayMapper">
+    <resultMap id="BaseResultMap" type="com.bitcom.base.domain.InfoSwiftcloudPay">
+        <id column="pay_id" property="payId" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="VARCHAR"/>
+        <result column="result_code" property="resultCode" jdbcType="VARCHAR"/>
+        <result column="mch_id" property="mchId" jdbcType="VARCHAR"/>
+        <result column="sign" property="sign" jdbcType="VARCHAR"/>
+        <result column="trade_type" property="tradeType" jdbcType="VARCHAR"/>
+        <result column="pay_result" property="payResult" jdbcType="INTEGER"/>
+        <result column="transaction_id" property="transactionId" jdbcType="VARCHAR"/>
+        <result column="out_transaction_id" property="outTransactionId" jdbcType="VARCHAR"/>
+        <result column="out_trade_no" property="outTradeNo" jdbcType="VARCHAR"/>
+        <result column="total_fee" property="totalFee" jdbcType="INTEGER"/>
+        <result column="bank_type" property="bankType" jdbcType="VARCHAR"/>
+        <result column="time_end" property="timeEnd" jdbcType="VARCHAR"/>
+        <result column="attach" property="attach" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    pay_id, status, result_code, mch_id, sign, trade_type, pay_result, transaction_id, 
+    out_transaction_id, out_trade_no, total_fee, bank_type, time_end, attach
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from info_swiftcloud_pay
+        where pay_id = #{payId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from info_swiftcloud_pay
+    where pay_id = #{payId,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.bitcom.base.domain.InfoSwiftcloudPay">
+    insert into info_swiftcloud_pay (pay_id, status, result_code, 
+      mch_id, sign, trade_type, 
+      pay_result, transaction_id, out_transaction_id, 
+      out_trade_no, total_fee, bank_type, 
+      time_end, attach)
+    values (#{payId,jdbcType=INTEGER}, #{status,jdbcType=VARCHAR}, #{resultCode,jdbcType=VARCHAR}, 
+      #{mchId,jdbcType=VARCHAR}, #{sign,jdbcType=VARCHAR}, #{tradeType,jdbcType=VARCHAR}, 
+      #{payResult,jdbcType=INTEGER}, #{transactionId,jdbcType=VARCHAR}, #{outTransactionId,jdbcType=VARCHAR}, 
+      #{outTradeNo,jdbcType=VARCHAR}, #{totalFee,jdbcType=INTEGER}, #{bankType,jdbcType=VARCHAR}, 
+      #{timeEnd,jdbcType=VARCHAR}, #{attach,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.bitcom.base.domain.InfoSwiftcloudPay">
+        insert into info_swiftcloud_pay
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="payId != null">
+                pay_id,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="resultCode != null">
+                result_code,
+            </if>
+            <if test="mchId != null">
+                mch_id,
+            </if>
+            <if test="sign != null">
+                sign,
+            </if>
+            <if test="tradeType != null">
+                trade_type,
+            </if>
+            <if test="payResult != null">
+                pay_result,
+            </if>
+            <if test="transactionId != null">
+                transaction_id,
+            </if>
+            <if test="outTransactionId != null">
+                out_transaction_id,
+            </if>
+            <if test="outTradeNo != null">
+                out_trade_no,
+            </if>
+            <if test="totalFee != null">
+                total_fee,
+            </if>
+            <if test="bankType != null">
+                bank_type,
+            </if>
+            <if test="timeEnd != null">
+                time_end,
+            </if>
+            <if test="attach != null">
+                attach,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="payId != null">
+                #{payId,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="resultCode != null">
+                #{resultCode,jdbcType=VARCHAR},
+            </if>
+            <if test="mchId != null">
+                #{mchId,jdbcType=VARCHAR},
+            </if>
+            <if test="sign != null">
+                #{sign,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeType != null">
+                #{tradeType,jdbcType=VARCHAR},
+            </if>
+            <if test="payResult != null">
+                #{payResult,jdbcType=INTEGER},
+            </if>
+            <if test="transactionId != null">
+                #{transactionId,jdbcType=VARCHAR},
+            </if>
+            <if test="outTransactionId != null">
+                #{outTransactionId,jdbcType=VARCHAR},
+            </if>
+            <if test="outTradeNo != null">
+                #{outTradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="totalFee != null">
+                #{totalFee,jdbcType=INTEGER},
+            </if>
+            <if test="bankType != null">
+                #{bankType,jdbcType=VARCHAR},
+            </if>
+            <if test="timeEnd != null">
+                #{timeEnd,jdbcType=VARCHAR},
+            </if>
+            <if test="attach != null">
+                #{attach,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bitcom.base.domain.InfoSwiftcloudPay">
+        update info_swiftcloud_pay
+        <set>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="resultCode != null">
+                result_code = #{resultCode,jdbcType=VARCHAR},
+            </if>
+            <if test="mchId != null">
+                mch_id = #{mchId,jdbcType=VARCHAR},
+            </if>
+            <if test="sign != null">
+                sign = #{sign,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeType != null">
+                trade_type = #{tradeType,jdbcType=VARCHAR},
+            </if>
+            <if test="payResult != null">
+                pay_result = #{payResult,jdbcType=INTEGER},
+            </if>
+            <if test="transactionId != null">
+                transaction_id = #{transactionId,jdbcType=VARCHAR},
+            </if>
+            <if test="outTransactionId != null">
+                out_transaction_id = #{outTransactionId,jdbcType=VARCHAR},
+            </if>
+            <if test="outTradeNo != null">
+                out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="totalFee != null">
+                total_fee = #{totalFee,jdbcType=INTEGER},
+            </if>
+            <if test="bankType != null">
+                bank_type = #{bankType,jdbcType=VARCHAR},
+            </if>
+            <if test="timeEnd != null">
+                time_end = #{timeEnd,jdbcType=VARCHAR},
+            </if>
+            <if test="attach != null">
+                attach = #{attach,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where pay_id = #{payId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bitcom.base.domain.InfoSwiftcloudPay">
+    update info_swiftcloud_pay
+    set status = #{status,jdbcType=VARCHAR},
+      result_code = #{resultCode,jdbcType=VARCHAR},
+      mch_id = #{mchId,jdbcType=VARCHAR},
+      sign = #{sign,jdbcType=VARCHAR},
+      trade_type = #{tradeType,jdbcType=VARCHAR},
+      pay_result = #{payResult,jdbcType=INTEGER},
+      transaction_id = #{transactionId,jdbcType=VARCHAR},
+      out_transaction_id = #{outTransactionId,jdbcType=VARCHAR},
+      out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      total_fee = #{totalFee,jdbcType=INTEGER},
+      bank_type = #{bankType,jdbcType=VARCHAR},
+      time_end = #{timeEnd,jdbcType=VARCHAR},
+      attach = #{attach,jdbcType=VARCHAR}
+    where pay_id = #{payId,jdbcType=INTEGER}
+  </update>
+
+    <select id="queryPayInfoByOutTradeNo" parameterType="java.lang.String"
+            resultType="com.bitcom.base.domain.InfoSwiftcloudPay">
+    select * from info_swiftcloud_pay where out_trade_no = #{outTradeNo}
+  </select>
+
+
+    <update id="updateCallBackPayInfo" parameterType="com.bitcom.base.domain.InfoSwiftcloudPay">
+    update info_swiftcloud_pay
+    set status = #{status,jdbcType=VARCHAR},
+      result_code = #{resultCode,jdbcType=VARCHAR},
+      mch_id = #{mchId,jdbcType=VARCHAR},
+      sign = #{sign,jdbcType=VARCHAR},
+      trade_type = #{tradeType,jdbcType=VARCHAR},
+      pay_result = #{payResult,jdbcType=INTEGER},
+      transaction_id = #{transactionId,jdbcType=VARCHAR},
+      out_transaction_id = #{outTransactionId,jdbcType=VARCHAR},
+      out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      total_fee = #{totalFee,jdbcType=INTEGER},
+      bank_type = #{bankType,jdbcType=VARCHAR},
+      time_end = #{timeEnd,jdbcType=VARCHAR},
+      attach = #{attach,jdbcType=VARCHAR}
+    where pay_id = #{payId,jdbcType=INTEGER} and transaction_id is null
+  </update>
+
+</mapper>

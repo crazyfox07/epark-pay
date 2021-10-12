@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bitcom.base.mapper.InfoTradeFlowMapper">
+    <resultMap id="BaseResultMap" type="com.bitcom.base.domain.InfoTradeFlow">
+        <id column="nid" property="nid" jdbcType="VARCHAR"/>
+        <result column="trade_no" property="tradeNo" jdbcType="VARCHAR"/>
+        <result column="out_trade_no" property="outTradeNo" jdbcType="VARCHAR"/>
+        <result column="mer_id" property="merId" jdbcType="VARCHAR"/>
+        <result column="termimal_id" property="termimalId" jdbcType="VARCHAR"/>
+        <result column="pay_scheme" property="payScheme" jdbcType="VARCHAR"/>
+        <result column="pay_type" property="payType" jdbcType="VARCHAR"/>
+        <result column="pay_api_channel" property="payApiChannel" jdbcType="VARCHAR"/>
+        <result column="total_amount" property="totalAmount" jdbcType="VARCHAR"/>
+        <result column="gmt_payment" property="gmtPayment" jdbcType="TIMESTAMP"/>
+        <result column="buyer_id" property="buyerId" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    nid, trade_no, out_trade_no, mer_id, termimal_id, pay_scheme, pay_type, pay_api_channel,
+    total_amount, gmt_payment, buyer_id
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from info_trade_flow
+        where nid = #{nid,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from info_trade_flow
+    where nid = #{nid,jdbcType=VARCHAR}
+  </delete>
+    <insert id="insert" parameterType="com.bitcom.base.domain.InfoTradeFlow">
+    insert into info_trade_flow (nid, trade_no, out_trade_no,
+      mer_id, termimal_id, pay_scheme,
+      pay_type, pay_api_channel, total_amount,
+      gmt_payment, buyer_id)
+    values (#{nid,jdbcType=VARCHAR}, #{tradeNo,jdbcType=VARCHAR}, #{outTradeNo,jdbcType=VARCHAR},
+      #{merId,jdbcType=VARCHAR}, #{termimalId,jdbcType=VARCHAR}, #{payScheme,jdbcType=VARCHAR},
+      #{payType,jdbcType=VARCHAR}, #{payApiChannel,jdbcType=VARCHAR}, #{totalAmount,jdbcType=VARCHAR},
+      #{gmtPayment,jdbcType=TIMESTAMP}, #{buyerId,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.bitcom.base.domain.InfoTradeFlow">
+        insert into info_trade_flow
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="nid != null">
+                nid,
+            </if>
+            <if test="tradeNo != null">
+                trade_no,
+            </if>
+            <if test="outTradeNo != null">
+                out_trade_no,
+            </if>
+            <if test="merId != null">
+                mer_id,
+            </if>
+            <if test="termimalId != null">
+                termimal_id,
+            </if>
+            <if test="payScheme != null">
+                pay_scheme,
+            </if>
+            <if test="payType != null">
+                pay_type,
+            </if>
+            <if test="payApiChannel != null">
+                pay_api_channel,
+            </if>
+            <if test="totalAmount != null">
+                total_amount,
+            </if>
+            <if test="gmtPayment != null">
+                gmt_payment,
+            </if>
+            <if test="buyerId != null">
+                buyer_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="nid != null">
+                #{nid,jdbcType=VARCHAR},
+            </if>
+            <if test="tradeNo != null">
+                #{tradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="outTradeNo != null">
+                #{outTradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="merId != null">
+                #{merId,jdbcType=VARCHAR},
+            </if>
+            <if test="termimalId != null">
+                #{termimalId,jdbcType=VARCHAR},
+            </if>
+            <if test="payScheme != null">
+                #{payScheme,jdbcType=VARCHAR},
+            </if>
+            <if test="payType != null">
+                #{payType,jdbcType=VARCHAR},
+            </if>
+            <if test="payApiChannel != null">
+                #{payApiChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="totalAmount != null">
+                #{totalAmount,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtPayment != null">
+                #{gmtPayment,jdbcType=TIMESTAMP},
+            </if>
+            <if test="buyerId != null">
+                #{buyerId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bitcom.base.domain.InfoTradeFlow">
+        update info_trade_flow
+        <set>
+            <if test="tradeNo != null">
+                trade_no = #{tradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="outTradeNo != null">
+                out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="merId != null">
+                mer_id = #{merId,jdbcType=VARCHAR},
+            </if>
+            <if test="termimalId != null">
+                termimal_id = #{termimalId,jdbcType=VARCHAR},
+            </if>
+            <if test="payScheme != null">
+                pay_scheme = #{payScheme,jdbcType=VARCHAR},
+            </if>
+            <if test="payType != null">
+                pay_type = #{payType,jdbcType=VARCHAR},
+            </if>
+            <if test="payApiChannel != null">
+                pay_api_channel = #{payApiChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="totalAmount != null">
+                total_amount = #{totalAmount,jdbcType=VARCHAR},
+            </if>
+            <if test="gmtPayment != null">
+                gmt_payment = #{gmtPayment,jdbcType=TIMESTAMP},
+            </if>
+            <if test="buyerId != null">
+                buyer_id = #{buyerId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where nid = #{nid,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bitcom.base.domain.InfoTradeFlow">
+    update info_trade_flow
+    set trade_no = #{tradeNo,jdbcType=VARCHAR},
+      out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+      mer_id = #{merId,jdbcType=VARCHAR},
+      termimal_id = #{termimalId,jdbcType=VARCHAR},
+      pay_scheme = #{payScheme,jdbcType=VARCHAR},
+      pay_type = #{payType,jdbcType=VARCHAR},
+      pay_api_channel = #{payApiChannel,jdbcType=VARCHAR},
+      total_amount = #{totalAmount,jdbcType=VARCHAR},
+      gmt_payment = #{gmtPayment,jdbcType=TIMESTAMP},
+      buyer_id = #{buyerId,jdbcType=VARCHAR}
+    where nid = #{nid,jdbcType=VARCHAR}
+  </update>
+
+    <select id="queryTradeFlowByOutTradeNo" parameterType="java.lang.String"
+            resultType="com.bitcom.base.domain.InfoTradeFlow">
+    select * from info_trade_flow where out_trade_no = #{outTradeNo} limit 0,1
+  </select>
+</mapper>
