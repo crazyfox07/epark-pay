@@ -1,6 +1,7 @@
 package com.bitcom.api.controller;
 
 import com.bitcom.pay.alipay.service.IAlipayCallbackService;
+import com.bitcom.pay.ccbpay.service.ICcbPayCallbackService;
 import com.bitcom.pay.chinaums.service.IChinaUmsPayNotifyService;
 import com.bitcom.pay.swift.service.ISwiftAliPayCallbackService;
 import com.bitcom.pay.swift.service.ISwiftCloudPayCallbackService;
@@ -30,6 +31,8 @@ public class PaymentCallbackController {
     private IChinaUmsPayNotifyService chinaUmsPayNotifyService;
     @Autowired
     private ISwiftCloudPayCallbackService swiftCloudPayCallbackService;
+    @Autowired
+    private ICcbPayCallbackService ccbPayCallbackService;
 
     @RequestMapping({"/alipay/payNotify"})
     @ResponseBody
@@ -93,6 +96,24 @@ public class PaymentCallbackController {
         } catch (Exception e) {
             e.printStackTrace();
             return "FAILED";
+        }
+    }
+
+    /**
+     * 中国建行支付回调
+     * @param request
+     * @return
+     */
+    @RequestMapping({"/ccb/payNotify"})
+    @ResponseBody
+    public String ccbPayNotify(HttpServletRequest request) {
+        try {
+            // todo 待删
+            System.out.println("***********************【建行龙支付回调】******************************");
+            return this.ccbPayCallbackService.ccbPayCallbackHandler(request);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseHandler.fail();
         }
     }
 }

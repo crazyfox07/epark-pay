@@ -29,6 +29,10 @@ public class CommonRefundServiceImpl
     @Qualifier("chinaUmsRefundServiceImpl")
     private IRefundService chinaUmsRefundServiceImpl;
 
+    @Autowired
+    @Qualifier("ccbPayRefundServiceImpl")
+    private IRefundService ccbPayRefundServiceImpl;
+
     @Transactional(rollbackFor = {Exception.class})
     public ReturnObject refund(String outTradeNo, String outRefundNo, String refundFee) throws Exception {
         InfoTradeFlow flow = this.infoTradeFlowMapper.queryTradeFlowByOutTradeNo(outTradeNo);
@@ -41,6 +45,9 @@ public class CommonRefundServiceImpl
             return this.swiftRefundServiceImpl.refund(outTradeNo, outRefundNo, refundFee);
         if (StringUtils.equals(payScheme, "0605")) {
             return this.chinaUmsRefundServiceImpl.refund(outTradeNo, outRefundNo, refundFee);
+        }
+        if (StringUtils.equals(payScheme, "0611")){
+            return this.ccbPayRefundServiceImpl.refund(outTradeNo, outRefundNo, refundFee);
         }
         return null;
     }

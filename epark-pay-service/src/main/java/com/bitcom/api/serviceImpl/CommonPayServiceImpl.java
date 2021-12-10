@@ -26,6 +26,10 @@ public class CommonPayServiceImpl
     @Qualifier("chinaUmsCommonPayServiceImpl")
     private ApiGatewayService chinaUmsPayServiceImpl;
 
+    @Autowired
+    @Qualifier("ccbPayServiceImpl")
+    private  ApiGatewayService ccbPayServiceImpl;
+
     @Transactional(rollbackFor = {Exception.class})
     public ReturnObject pay(JSONObject protocol) throws Exception {
         String payScheme = protocol.getString("payScheme");
@@ -66,6 +70,8 @@ public class CommonPayServiceImpl
             res = this.swiftCommonPayServiceImpl.pay(protocol);
         } else if (StringUtils.equals("0605", payScheme)) {
             res = this.chinaUmsPayServiceImpl.pay(protocol);
+        } else if (StringUtils.equals("0611", payScheme)){
+            res = this.ccbPayServiceImpl.pay(protocol);
         }
         return res;
     }

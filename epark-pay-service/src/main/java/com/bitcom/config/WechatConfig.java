@@ -68,6 +68,15 @@ public class WechatConfig {
             mch_id = "1484493782";
             mch_key = "BITCOMBITCOMBITCOMBITCOMBITCOM15";
             cert_path = "/root/cert/js/apiclient_cert.p12";
+        } else if ("offline".equals(PROJECT_NAME)) {
+            AppID = "wx1ff09335fb4a86bd";
+            MchID = "1581810741";
+            Mch_KEY = "882845749296461a873c0627b929d6bb";
+            CERT_PATH = "D:/RUN/park-pay/cert/apiclient_cert.p12";
+            appid = "wx1ff09335fb4a86bd";
+            mch_id = "1581810741";
+            mch_key = "882845749296461a873c0627b929d6bb";
+            cert_path = "D:/RUN/park-pay/cert/apiclient_cert.p12";
         }
     }
 }

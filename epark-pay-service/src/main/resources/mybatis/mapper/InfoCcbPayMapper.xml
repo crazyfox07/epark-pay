@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bitcom.base.mapper.InfoCcbPayMapper">
+    <resultMap id="BaseResultMap" type="com.bitcom.base.domain.InfoCcbPay">
+        <id column="pay_id" property="payId" jdbcType="INTEGER"/>
+        <result column="pay_id" property="posId" jdbcType="VARCHAR"/>
+        <result column="branch_id" property="branchId" jdbcType="VARCHAR"/>
+        <result column="out_trade_no" property="outTradeNo" jdbcType="VARCHAR"/>
+        <result column="payment" property="payment" jdbcType="VARCHAR"/>
+        <result column="cur_code" property="curCode" jdbcType="VARCHAR"/>
+        <result column="remark1" property="remark1" jdbcType="VARCHAR"/>
+        <result column="remark2" property="remark2" jdbcType="VARCHAR"/>
+        <result column="acc_type" property="accType" jdbcType="VARCHAR"/>
+        <result column="success" property="success" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="VARCHAR"/>
+        <result column="usr_msg" property="usrMsg" jdbcType="VARCHAR"/>
+        <result column="usr_info" property="usrInfo" jdbcType="VARCHAR"/>
+        <result column="sign" property="sign" jdbcType="VARCHAR"/>
+        <result column="attach" property="attach" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+		pay_id, branch_id, out_trade_no, payment, cur_code, remark1, remark2, acc_type,
+		success, type, usr_msg, usr_info, sign, attach
+	</sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap"
+            parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from info_ccb_pay
+        where pay_id = #{payId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from info_ccb_pay
+		where pay_id = #{payId,jdbcType=INTEGER}
+	</delete>
+    <insert id="insert" parameterType="com.bitcom.base.domain.InfoCcbPay">
+		insert into info_ccb_pay (pay_id, pos_id, branch_id,
+		out_trade_no, payment, cur_code,
+		remark1, remark2, acc_type,
+		success, type, usr_msg,
+		usr_info, sign, attach)
+		values (#{payId,jdbcType=INTEGER}, #{posId,jdbcType=VARCHAR},
+		#{branchId,jdbcType=VARCHAR},
+		#{outTradeNo,jdbcType=VARCHAR}, #{payment,jdbcType=VARCHAR}, #{curCode,jdbcType=VARCHAR},
+		#{remark1,jdbcType=VARCHAR}, #{remark2,jdbcType=VARCHAR},
+		#{accType,jdbcType=VARCHAR},
+		#{success,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{usrMsg,jdbcType=VARCHAR},
+		#{usrInfo,jdbcType=VARCHAR}, #{sign,jdbcType=VARCHAR},
+		#{attach,jdbcType=VARCHAR})
+	</insert>
+    <insert id="insertSelective" parameterType="com.bitcom.base.domain.InfoCcbPay">
+        insert into info_ccb_pay
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="payId != null">
+                pay_id,
+            </if>
+            <if test="posId != null">
+                pos_id,
+            </if>
+            <if test="branchId != null">
+                branch_id,
+            </if>
+            <if test="outTradeNo != null">
+                out_trade_no,
+            </if>
+            <if test="payment != null">
+                payment,
+            </if>
+            <if test="curCode != null">
+                cur_code,
+            </if>
+            <if test="remark1 != null">
+                remark1,
+            </if>
+            <if test="remark2 != null">
+                remark2,
+            </if>
+            <if test="accType != null">
+                acc_type,
+            </if>
+            <if test="success != null">
+                success,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="usrMsg != null">
+                usr_msg,
+            </if>
+            <if test="usrInfo != null">
+                usr_info,
+            </if>
+            <if test="sign != null">
+                sign,
+            </if>
+            <if test="attach != null">
+                attach,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="payId != null">
+                pay_id,
+            </if>
+            <if test="posId != null">
+                pos_id,
+            </if>
+            <if test="branchId != null">
+                branch_id,
+            </if>
+            <if test="outTradeNo != null">
+                out_trade_no,
+            </if>
+            <if test="payment != null">
+                payment,
+            </if>
+            <if test="curCode != null">
+                cur_code,
+            </if>
+            <if test="remark1 != null">
+                remark1,
+            </if>
+            <if test="remark2 != null">
+                remark2,
+            </if>
+            <if test="accType != null">
+                acc_type,
+            </if>
+            <if test="success != null">
+                success,
+            </if>
+            <if test="type != null">
+                type,
+            </if>
+            <if test="usrMsg != null">
+                usr_msg,
+            </if>
+            <if test="usrInfo != null">
+                usr_info,
+            </if>
+            <if test="sign != null">
+                sign,
+            </if>
+            <if test="attach != null">
+                attach,
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bitcom.base.domain.InfoCcbPay">
+        update info_ccb_pay
+        <set>
+            <if test="posId != null">
+                pos_id = #{posId,jdbcType=VARCHAR},
+            </if>
+            <if test="branchId != null">
+                branch_id = #{branchId,jdbcType=VARCHAR},
+            </if>
+            <if test="outTradeNo != null">
+                out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+            </if>
+            <if test="payment != null">
+                payment = #{payment,jdbcType=VARCHAR},
+            </if>
+            <if test="curCode != null">
+                cur_code = #{curCode,jdbcType=VARCHAR},
+            </if>
+            <if test="remark1 != null">
+                remark1 = #{remark1,jdbcType=VARCHAR},
+            </if>
+            <if test="remark2 != null">
+                remark2 = #{remark2,jdbcType=VARCHAR},
+            </if>
+            <if test="accType != null">
+                acc_type = #{accType,jdbcType=VARCHAR},
+            </if>
+            <if test="success != null">
+                success = #{success,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null">
+                type = #{type,jdbcType=VARCHAR},
+            </if>
+            <if test="usrMsg != null">
+                usr_msg = #{usrMsg,jdbcType=VARCHAR},
+            </if>
+            <if test="usrInfo != null">
+                usr_info = #{usrInfo,jdbcType=VARCHAR},
+            </if>
+            <if test="sign != null">
+                sign = #{sign,jdbcType=VARCHAR},
+            </if>
+            <if test="attach != null">
+                attach = #{attach,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where pay_id = #{payId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bitcom.base.domain.InfoCcbPay">
+		update info_ccb_pay
+		set pos_id = #{posId,jdbcType=VARCHAR},
+		branch_id = #{branchId,jdbcType=VARCHAR},
+		out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+		payment = #{payment,jdbcType=VARCHAR},
+		cur_code = #{curCode,jdbcType=VARCHAR},
+		remark1 = #{remark1,jdbcType=VARCHAR},
+		remark2 = #{remark2,jdbcType=VARCHAR},
+		acc_type = #{accType,jdbcType=VARCHAR},
+		success = #{success,jdbcType=VARCHAR},
+		type = #{type,jdbcType=VARCHAR},
+		usr_msg = #{usrMsg,jdbcType=VARCHAR},
+		usr_info = #{usrInfo,jdbcType=VARCHAR},
+		sign = #{sign,jdbcType=VARCHAR},
+		attach = #{attach,jdbcType=VARCHAR}
+		where pay_id = #{payId,jdbcType=INTEGER}
+	</update>
+
+    <!-- wgw add 更新建行支付记录，防止重复支付20180414 -->
+    <update id="updateCallBackCcbPay" parameterType="com.bitcom.base.domain.InfoCcbPay">
+		update info_ccb_pay
+		set
+			pos_id = #{posId,jdbcType=VARCHAR},
+			branch_id = #{branchId,jdbcType=VARCHAR},
+			out_trade_no = #{outTradeNo,jdbcType=VARCHAR},
+			payment = #{payment,jdbcType=VARCHAR},
+			cur_code = #{curCode,jdbcType=VARCHAR},
+			remark1 = #{remark1,jdbcType=VARCHAR},
+			remark2 = #{remark2,jdbcType=VARCHAR},
+			acc_type = #{accType,jdbcType=VARCHAR},
+			success = #{success,jdbcType=VARCHAR},
+			type = #{type,jdbcType=VARCHAR},
+			usr_msg = #{usrMsg,jdbcType=VARCHAR},
+			usr_info = #{usrInfo,jdbcType=VARCHAR},
+			sign = #{sign,jdbcType=VARCHAR},
+			attach = #{attach,jdbcType=VARCHAR}
+
+		where pay_id = #{payId,jdbcType=INTEGER}
+	</update>
+
+
+    <!-- 查询建行支付结果 -->
+    <select id="queryCcbPayByOutTradeNo" parameterType="java.lang.String" resultType="com.bitcom.base.domain.InfoCcbPay">
+  		select * from info_ccb_pay where out_trade_no = #{outTradeNo}
+    </select>
+
+
+</mapper>

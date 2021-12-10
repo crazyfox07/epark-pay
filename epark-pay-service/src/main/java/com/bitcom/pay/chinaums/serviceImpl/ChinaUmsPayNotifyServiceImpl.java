@@ -7,6 +7,7 @@ import com.bitcom.base.mapper.InfoTradeFlowMapper;
 import com.bitcom.base.mapper.InfoUmsPayMapper;
 import com.bitcom.common.utils.DateUtils;
 import com.bitcom.common.utils.NumberUtils;
+import com.bitcom.common.utils.Topics;
 import com.bitcom.common.utils.UUIDUtils;
 import com.bitcom.config.ChinaUmsConfig;
 import com.bitcom.pay.chinaums.service.IChinaUmsPayNotifyService;
@@ -133,7 +134,7 @@ public class ChinaUmsPayNotifyServiceImpl
             payMessage.setPayTime(DateUtils.toTimeStr(gmtPay));
             payMessage.setAttach(cachedAttach.getAttach());
 
-            Message msg = new Message("topic-pay", tag, JSON.toJSONString(payMessage).getBytes());
+            Message msg = new Message(Topics.TOPIC_PAY, tag, JSON.toJSONString(payMessage).getBytes());
             SendResult sendResult = this.defaultMQProducer.send(msg);
             if (sendResult != null) {
                 logger.info("chinaUms pay callback message send success.Topic={},msgId={}", msg.getTopic(), sendResult.getMsgId());

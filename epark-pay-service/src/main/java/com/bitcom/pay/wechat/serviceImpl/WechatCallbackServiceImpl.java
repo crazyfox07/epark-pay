@@ -6,6 +6,7 @@ import com.bitcom.base.domain.InfoWxPay;
 import com.bitcom.base.mapper.InfoWxPayMapper;
 import com.bitcom.common.utils.DateUtils;
 import com.bitcom.common.utils.NumberUtils;
+import com.bitcom.common.utils.Topics;
 import com.bitcom.config.WechatConfig;
 import com.bitcom.pay.wechat.service.IWechatCallbackService;
 import com.bitcom.protocol.CachedAttach;
@@ -113,7 +114,7 @@ public class WechatCallbackServiceImpl
             payMessage.setPayTime(DateUtils.toTimeStr(gmtPay));
             payMessage.setAttach(cachedAttach.getAttach());
 
-            Message msg = new Message("topic-pay", tag, JSON.toJSONString(payMessage).getBytes());
+            Message msg = new Message(Topics.TOPIC_PAY, tag, JSON.toJSONString(payMessage).getBytes());
             SendResult sendResult = this.defaultMQProducer.send(msg);
             if (sendResult != null) {
                 this.logger.info("【微信支付回调】发送消息成功.Topic={},msgId={}", msg.getTopic(), sendResult.getMsgId());

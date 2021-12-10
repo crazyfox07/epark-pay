@@ -6,6 +6,7 @@ import com.bitcom.api.service.ITradeFlowService;
 import com.bitcom.base.domain.InfoZfbPay;
 import com.bitcom.base.mapper.InfoZfbPayMapper;
 import com.bitcom.common.utils.DateUtils;
+import com.bitcom.common.utils.Topics;
 import com.bitcom.config.AlipayConfig;
 import com.bitcom.pay.alipay.service.IAlipayCallbackService;
 import com.bitcom.protocol.CachedAttach;
@@ -112,7 +113,7 @@ public class AlipayCallbackServiceImpl
                 payMessage.setPayTime(notifyParam.getGmtPayment());
                 payMessage.setAttach(cachedAttach.getAttach());
 
-                Message msg = new Message("topic-pay", tag, JSON.toJSONString(payMessage).getBytes());
+                Message msg = new Message(Topics.TOPIC_PAY, tag, JSON.toJSONString(payMessage).getBytes());
                 SendResult sendResult = this.defaultMQProducer.send(msg);
                 if (sendResult != null) {
                     this.logger.info("【支付宝回调】发送消息成功.Topic={},msgId={}", msg.getTopic(), sendResult.getMsgId());

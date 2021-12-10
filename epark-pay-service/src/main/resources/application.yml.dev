@@ -1,15 +1,14 @@
-# server port
 server:
-  port: 8001
+  port: 3605
 debug: false
 # DataSource configuration ,springboot auto-configuration
 spring:
   application:
     name: epark-pay-service
   datasource:
-    url: jdbc:mysql://172.16.99.11:3306/epark?useUnicode=true&characterEncoding=utf8
-    username: root
-    password: rzzhtc
+    url: jdbc:mysql://192.168.1.102:3306/epark?useUnicode=true&characterEncoding=utf8
+    username: test
+    password: aabbcc2020
     driver-class-name: com.mysql.jdbc.Driver
 
 mybatis:
@@ -23,12 +22,13 @@ mybatis:
 
 # epark configuration
 epark:
-  callbackUrl: http://jtss.rzbus.cn:8001
-  callbackUrlZfb: http://alipay.ggjtss.cn:8001
+  callbackUrl: http://pay.etcyoubo.net:9000
+  callbackUrlZfb: http://pay.etcyoubo.net:9000
   rocketmq:
-    nameserver: 172.16.99.53:9876;172.16.99.63:9876
+    nameserver: 192.168.1.113:9876;192.168.1.213:9876
 
 # add mysql log
 logging:
   level:
-    com.bitcom.base.mapper: error
+    com.bitcom.base.mapper: debug
+
